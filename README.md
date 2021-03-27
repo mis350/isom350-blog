@@ -40,6 +40,9 @@ python manage.py createsuperuser
 
 3. Run the django server by hittin run in replit, then open the application website and add the path /admin to the url to go to the admin site. Login using the admin user you created from step 1 and you can start managing posts.
 
+# 4- Improved admin - Changes
+1. Changes made in admins.py that allows us to control how the post is managed in the admin interface. See the changes made in blog/admin.py
+
 # Developing Django on Repl.it
 
 - Fork this template to get started
