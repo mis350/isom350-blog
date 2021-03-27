@@ -1,16 +1,12 @@
-<!doctype html>
+{% extends 'base.html' %}
 
-<html lang="en">
-<head>
-  <title>{{ post.title }}</title>
-</head>
+{% block title %}{{ post.title }}{% endblock title%}
 
-<body>
+{% block content %}
   <h1>{{ post.title }}</h1>
   <p>{{ post.body }}</p>
   <pre>Posted on: {{ post.created_on }}</pre>
   <pre>Updated on: {{ post.updated_on }}</pre>
 
   <a href="{% url 'home'  %}"> See other blog posts</a>
-</body>
-</html>
+{% endblock content%}

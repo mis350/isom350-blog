@@ -1,21 +1,22 @@
-<!doctype html>
+{% extends 'base.html' %}
 
-<html lang="en">
-<head>
-  <title>Post List</title>
-</head>
+{% block title %}Post List{% endblock title%}
 
-<body>
+{% block content %}
   <h1>Latest posts:</h1>
-  <ul>
-    {% for post in post_list %}
-    <li>
-      <a href="{% url 'post_detail' post.slug  %}">
-        {{ post.title }}
-      </a>, posted {{ post.created_on|timesince }} ago
-      <p>{{ post.body|truncatewords:10 }}</p>
-      </li>
-    {% endfor %}
-  </ul>
-</body>
-</html>
+
+<div class="container">
+{% for post in post_list %}
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.body|truncatewords:10 }}</p>
+    <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More</a>
+  </div>
+  <div class="card-footer text-muted">
+    {{ post.created_on|timesince }} ago
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock content %}

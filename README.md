@@ -61,6 +61,30 @@ python manage.py createsuperuser
 3. use truncatewords filter on blog body to create summary in post_list template
 4. use timesince filter to display relative time for blog post list in post_list template
 
+# 9- Improve Design - Changes
+1. created a templates directory in the root directory of the proejct and added the base.html that will be used to style all the pages in the website.
+2. Updated setting.py to let Django know where to find the base template by updating **TEMPLATES** configuration by changing the **DIR** value, it should look like this:
+```python
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # only this line was changed
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+```
+3. Updated post_list.html and post_detail.html templates to extend base.html, where base.html utilizes bootstrap framework for creating responsive ui.
+
+
 # Developing Django on Repl.it
 
 - Fork this template to get started
