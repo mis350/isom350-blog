@@ -1,3 +1,20 @@
+# 1-Setup - Changes
+1. create app 'blog' using
+```bash
+python manage.py startapp blog
+```
+2. In the files mysite/settings.py, add the blog app to list of INSTALLED_APPS. It should look like this:
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
+
 # Developing Django on Repl.it
 
 - Fork this template to get started
