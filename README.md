@@ -47,6 +47,10 @@ python manage.py createsuperuser
 1. Add PostListView to list posts in blog/views.py
 2. Add PostView to show a detailed view of the post in blog/views.py
 
+# 6- urls - Changes
+1. create blog/urls.py
+2. update mysite/urls.py to include blog/urls.py
+
 # Developing Django on Repl.it
 
 - Fork this template to get started
