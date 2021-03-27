@@ -9,7 +9,12 @@
   <h1>Latest posts:</h1>
   <ul>
     {% for post in post_list %}
-    <li>{{ post.title }}, posted on {{ post.created_on }}</li>
+    <li>
+      <a href="{% url 'post_detail' post.slug  %}">
+        {{ post.title }}
+      </a>, posted {{ post.created_on|timesince }} ago
+      <p>{{ post.body|truncatewords:10 }}</p>
+      </li>
     {% endfor %}
   </ul>
 </body>

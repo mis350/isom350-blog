@@ -55,6 +55,12 @@ python manage.py createsuperuser
 1. Created templates directory under blog app directory
 2. created post_list.html and post_detail.html under blog/templates
 
+# 8- Linked Templates - Changes
+1. linking post list to detailed blog in post_list.html using url tag
+2. add link back to list from detailed view using url tag
+3. use truncatewords filter on blog body to create summary in post_list template
+4. use timesince filter to display relative time for blog post list in post_list template
+
 # Developing Django on Repl.it
 
 - Fork this template to get started
