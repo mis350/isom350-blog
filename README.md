@@ -30,6 +30,15 @@ python manage.py migrate
 ```
 **Note:** You run this command everytime after running makemigrations
 
+# 3- Admin - Changes
+1. Create an admin user by running the following command in shell then follow instructions:
+```bash
+python manage.py createsuperuser
+```
+
+2. Register any model you want the admin to control in blog/admin.py. See the file to learn how to register a model to be controled by the admin
+
+3. Run the django server by hittin run in replit, then open the application website and add the path /admin to the url to go to the admin site. Login using the admin user you created from step 1 and you can start managing posts.
 
 # Developing Django on Repl.it
 
