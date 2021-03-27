@@ -3,8 +3,9 @@ from .models import Post
 
 # Create your views here.
 class PostListView(generic.ListView):
-  queryset = Post.objects.filter(status=1).order_by('-created_on')
+  model = Post
   template_name = 'post_list.html'
+  queryset = Post.objects.filter(status=1).order_by('-created_on')
 
 class PostDetailView(generic.DetailView):
   model = Post

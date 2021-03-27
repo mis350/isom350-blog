@@ -6,9 +6,10 @@
 </head>
 
 <body>
+  <h1>Latest posts:</h1>
   <ul>
-    {% for post in object_list %}
-    <li>{{ post.created_on }}: {{ post.title }}</li>
+    {% for post in post_list %}
+    <li>{{ post.title }}, posted on {{ post.created_on }}</li>
     {% endfor %}
   </ul>
 </body>

@@ -53,7 +53,7 @@ python manage.py createsuperuser
 
 # 7- Templates - Changes
 1. Created templates directory under blog app directory
-2. created post_list.html and post_detail.html under blog/temapltes
+2. created post_list.html and post_detail.html under blog/templates
 
 # Developing Django on Repl.it
 
