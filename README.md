@@ -43,6 +43,10 @@ python manage.py createsuperuser
 # 4- Improved admin - Changes
 1. Changes made in admins.py that allows us to control how the post is managed in the admin interface. See the changes made in blog/admin.py
 
+# 5- Views - Changes
+1. Add PostListView to list posts in blog/views.py
+2. Add PostView to show a detailed view of the post in blog/views.py
+
 # Developing Django on Repl.it
 
 - Fork this template to get started
