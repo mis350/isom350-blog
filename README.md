@@ -15,6 +15,22 @@ INSTALLED_APPS = [
 ]
 ```
 
+# 2- Models - Changes
+1. Create the database models in **blog/models.py** to reflect the data requirements of the project (typically visualized using the ER-Diagram). 
+
+2. Prepare the data definition files for the used database by typing in shell:
+```bash
+python manage.py makemigrations
+```
+**Note:** You run this command everytime a change is made to the models
+
+3. Create the database tables by running the following in shell:
+```bash
+python manage.py migrate
+```
+**Note:** You run this command everytime after running makemigrations
+
+
 # Developing Django on Repl.it
 
 - Fork this template to get started
