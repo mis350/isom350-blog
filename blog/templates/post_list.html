@@ -1,0 +1,15 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <title>Post List</title>
+</head>
+
+<body>
+  <ul>
+    {% for post in object_list %}
+    <li>{{ post.created_on }}: {{ post.title }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
