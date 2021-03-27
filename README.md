@@ -51,6 +51,10 @@ python manage.py createsuperuser
 1. create blog/urls.py
 2. update mysite/urls.py to include blog/urls.py
 
+# 7- Templates - Changes
+1. Created templates directory under blog app directory
+2. created post_list.html and post_detail.html under blog/temapltes
+
 # Developing Django on Repl.it
 
 - Fork this template to get started
