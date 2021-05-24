@@ -5,7 +5,10 @@ from django.shortcuts import render
 def test_view(request):
   return render(request, "homepage.html")
 
-
+def greet_view(request, name):
+  data = {}
+  data["username"] = name
+  return render(request, 'greet.html', context=data)
 
 ## The old way of doing things
 # from django.http import HttpResponse
