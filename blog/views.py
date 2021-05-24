@@ -4,6 +4,10 @@ from django.shortcuts import render
 def test_view(request):
   return render(request, 'ahmed.html')
 
+def greet_view(request, name):
+  data = {}
+  data["greeted"] = name
+  return render(request, 'greet.html', context=data)
 
 # This is the not so right way
 # from django.http import HttpResponse
