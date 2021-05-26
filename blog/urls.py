@@ -1,10 +1,11 @@
 
 from django.urls import path
-from .views import test_view, greet_view
+from . import views
 
 urlpatterns = [
-  path('test/', test_view), 
-  path('tajroba/', test_view),
-  path('tt/', test_view), 
-  path('greet/<str:name>/', greet_view),
+  path('test/', views.test_view), 
+  path('tajroba/', views.test_view),
+  path('tt/', views.test_view), 
+  path('greet/<str:name>/', views.greet_view),
+  path('posts/', views.list_posts_view),
 ]

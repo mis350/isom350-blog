@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import Post
+
 # using render (the right way)
 def test_view(request):
   return render(request, 'ahmed.html')
@@ -8,6 +10,15 @@ def greet_view(request, name):
   data = {}
   data["greeted"] = name
   return render(request, 'greet.html', context=data)
+
+def list_posts_view(request):
+  
+  data_list = Post.objects.all()
+
+
+  data = {}
+  data["posts"] = data_list
+  return render(request, "post_list.html", context=data)
 
 # This is the not so right way
 # from django.http import HttpResponse
