@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import Post
+
 # Create your views here.
 
 def test_view(request):
@@ -9,6 +11,13 @@ def greet_view(request, name):
   data = {}
   data["username"] = name
   return render(request, 'greet.html', context=data)
+
+def list_posts(request):
+  data = {}
+  posts = Post.objects.filter(status=1).order_by('-created_on')
+  data['post_list'] = posts
+
+  return render(request, "post_list.html", context=data)
 
 ## The old way of doing things
 # from django.http import HttpResponse
