@@ -12,7 +12,8 @@ class Post(models.Model):
   title = models.CharField(max_length=200, unique=True)
   slug = models.SlugField(max_length=200, unique=True)
   body = models.TextField()
-  created_on = models.DateTimeField(auto_now_add=True)
+  created_on = models.DateTimeField(auto_now_add=True) 
+  # created_on__hour = 2
   updated_on = models.DateTimeField(auto_now=True)
   status = models.IntegerField(choices=STATUS, default=0)
 

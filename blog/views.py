@@ -14,7 +14,12 @@ def greet_view(request, name):
 
 def list_posts_view(request):
   data = {}
-  posts = Post.objects.all()
+  posts = Post.objects.filter(
+    created_on__year=2019,
+    created_on__month=3, 
+    created_on__day=2, 
+    created_on__hour=17,
+  )
   data["post_list"] = posts
   return render(request, "posts.html", context=data)
 
