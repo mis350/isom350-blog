@@ -22,7 +22,7 @@ class Post(models.Model):
     # Always use self.xxx to access instance variables
     return self.title
 
-class Comment(models.model):
+class Comment(models.Model):
   comment = models.TextField()
   author = models.CharField(max_length=100, blank=True, null=True)
   email = models.EmailField(blank=True, null=True)
