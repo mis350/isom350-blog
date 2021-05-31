@@ -21,3 +21,9 @@ class Post(models.Model):
     # Here we are requesting that the title only is displayed. You can return any constructed string.
     # Always use self.xxx to access instance variables
     return self.title
+
+class Comment(models.model):
+  comment = models.TextField()
+  author = models.CharField(max_length=100, blank=True, null=True)
+  email = models.EmailField(blank=True, null=True)
+  post = models.ForeignKey('Post', on_delete=models.CASCADE) 
