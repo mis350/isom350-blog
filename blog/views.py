@@ -13,8 +13,12 @@ def greet_view(request, name):
 
 def list_posts_view(request):
   
-  data_list = Post.objects.all()
-
+  data_list = Post.objects.filter(
+    created_on__month=3,
+    created_on__day=2,
+    created_on__hour=17,
+    created_on__year=2019,
+    )
 
   data = {}
   data["posts"] = data_list
