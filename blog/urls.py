@@ -8,4 +8,6 @@ urlpatterns = [
   path('tt/', views.test_view), 
   path('greet/<str:name>/', views.greet_view),
   path('posts/', views.list_posts_view),
+  path('search/title/<str:query>/', views.search_posts_view),
+  path('post/<str:s>/',views.detailed_post_view),
 ]

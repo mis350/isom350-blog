@@ -30,3 +30,5 @@ class PostAdmin(admin.ModelAdmin):
 # notice change here, we want to use the PostAdmin class
 # as configuration for post administrator
 admin.site.register(Post, PostAdmin)
+
+admin.site.register(Comment)

@@ -9,6 +9,7 @@ class Post(models.Model):
     (1,"Publish")
   )
 
+  #id
   title = models.CharField(max_length=200, unique=True)
   slug = models.SlugField(max_length=200, unique=True)
   body = models.TextField()
