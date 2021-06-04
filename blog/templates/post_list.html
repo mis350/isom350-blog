@@ -12,7 +12,13 @@
 <ol>
 {% for p in posts %}
 <li>
-<strong>{{ p.title }}</strong> created on {{ p.created_on }} 
+<strong>
+  <a href="/blog/post/{{ p.slug }}/">
+    {{ p.title }}
+  </a>
+  
+  
+  </strong> created on {{ p.created_on }} 
 </li>
 {% endfor %}
 </ol>

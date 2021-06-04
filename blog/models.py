@@ -15,7 +15,7 @@ class Post(models.Model):
   created_on = models.DateTimeField(auto_now_add=True)
   updated_on = models.DateTimeField(auto_now=True)
   status = models.IntegerField(choices=STATUS, default=0)
-
+  
   def __str__(self):
     # This method tells django what to display when a post object is printed or what to display in the admin interface. 
     # Here we are requesting that the title only is displayed. You can return any constructed string.
@@ -26,4 +26,5 @@ class Comment(models.Model):
   comment = models.TextField()
   author = models.CharField(max_length=100, blank=True, null=True)
   email = models.EmailField(blank=True, null=True)
+  created_on = models.DateTimeField(auto_now_add=True)
   post = models.ForeignKey('Post', on_delete=models.CASCADE) 

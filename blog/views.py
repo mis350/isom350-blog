@@ -1,10 +1,17 @@
+import datetime
+
 from django.shortcuts import render
 
 from .models import Post
 
+def test_view(request): #1
+    data = {} #2
+    data["my_name"] = "Mohammad" #3
+    return render(request, "hello_world.html", context=data) #4
+
 # using render (the right way)
-def test_view(request):
-  return render(request, 'ahmed.html')
+# def test_view(request):
+#   return render(request, 'ahmed.html')
 
 def greet_view(request, name):
   data = {}
@@ -13,12 +20,36 @@ def greet_view(request, name):
 
 def list_posts_view(request):
   
-  data_list = Post.objects.all()
+  # d = datetime.datetime(2021, 4,1)
+  # data_list = Post.objects.filter(created_on__gt=d)
 
+  d1 = datetime.datetime(2021, 5, 1)
+  d2 = datetime.datetime(2021, 6, 1)
+
+  data_list = Post.objects.filter(created_on__range=(d1, d2))
+  #data_list = Post.objects.all()
 
   data = {}
   data["posts"] = data_list
   return render(request, "post_list.html", context=data)
+
+def search_posts(request, query):
+  data_list = Post.objects.filter(title__icontains=query)
+  data = {}
+  data["posts"] = data_list
+  return render(request, "post_list.html", context=data)
+
+
+def show_post(request, s):
+  obj = Post.objects.get(slug=s)
+
+  comments = obj.comment_set.all()
+
+  data = {}
+  data["post"] = obj
+  data["comment_list"] = comments
+  
+  return render(request, "post_detail.html", context=data)
 
 # This is the not so right way
 # from django.http import HttpResponse

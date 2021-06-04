@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html lang="en">
+<head><title>{{ post.title }}</title></head>
+  <body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.body }}</p>
+    <pre>Posted on: {{ post.created_on }}</pre>
+    <pre>Updated on: {{ post.updated_on }}</pre>
+
+    <h3>Comments:</h3>
+  <ul>
+    {% for c in comment_list %}
+    <li>
+      {{ c.comment }} by {{ c.author }} on {{ c.created_on }}
+    </li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>
