@@ -1,8 +1,10 @@
 import datetime
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.utils.text import slugify
 
 from .models import Post
+from .forms import PostForm, CommentForm
 
 def test_view(request): #1
     data = {} #2
@@ -23,11 +25,11 @@ def list_posts_view(request):
   # d = datetime.datetime(2021, 4,1)
   # data_list = Post.objects.filter(created_on__gt=d)
 
-  d1 = datetime.datetime(2021, 5, 1)
-  d2 = datetime.datetime(2021, 6, 1)
+  # d1 = datetime.datetime(2021, 5, 1)
+  # d2 = datetime.datetime(2021, 6, 1)
 
-  data_list = Post.objects.filter(created_on__range=(d1, d2))
-  #data_list = Post.objects.all()
+  # data_list = Post.objects.filter(created_on__range=(d1, d2))
+  data_list = Post.objects.all()
 
   data = {}
   data["posts"] = data_list
@@ -42,15 +44,35 @@ def search_posts(request, query):
 
 def show_post(request, s):
   obj = Post.objects.get(slug=s)
-
   comments = obj.comment_set.all()
-
   data = {}
   data["post"] = obj
   data["comment_list"] = comments
   
+  
+  form = CommentForm(request.POST or None, initial={"post":obj.pk} )
+  data["comment_form"] = form
+  if form.is_valid():
+    form.save()
+    return redirect("show-post", s=obj.slug)
+  
   return render(request, "post_detail.html", context=data)
 
+
+def create_post(request):
+  data = {}
+  form = PostForm(request.POST or None)
+  data["form"] = form
+  if form.is_valid():
+    # this will create post object but not save it because we want to create a slug
+    post = form.save(commit=False)
+    post.slug = slugify(post.title)
+    post.save()
+    #return redirect("list-posts")
+    return redirect("show-post", s=post.slug)
+
+    
+  return render(request, 'create_post.html', data)
 # This is the not so right way
 # from django.http import HttpResponse
 
