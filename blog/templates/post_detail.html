@@ -16,12 +16,5 @@
     </li>
     {% endfor %}
     </ul>
-
-    <h4>Write a comment</h4>
-    <form action="." method="POST">
-      {% csrf_token %}
-      {{ comment_form.as_p }}
-   <input type="submit" value="Submit">
-    </form>
   </body>
 </html>
