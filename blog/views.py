@@ -22,13 +22,15 @@ def greet_view(request, name):
 
 def list_posts_view(request):
   
-  # d = datetime.datetime(2021, 4,1)
-  # data_list = Post.objects.filter(created_on__gt=d)
+  d = datetime.datetime(2021, 4,1)
+  data_list = Post.objects.filter(
+    created_on__gt=d
+  )
 
-  #d1 = datetime.datetime(2021, 5, 1)
-  #d2 = datetime.datetime(2021, 6, 1)
+  # d1 = datetime.datetime(2021, 5, 1)
+  # d2 = datetime.datetime(2021, 6, 1)
 
-  #data_list = Post.objects.filter(created_on__range=(d1, d2))
+  # data_list = Post.objects.filter(created_on__range=(d1, d2))
   data_list = Post.objects.all()
 
   data = {}
@@ -55,7 +57,7 @@ def show_post(request, s):
 
 
 def create_post(request):
-  f = PostForm(request.POST or None) 
+  f = PostForm(request.POST or None)
 
   data = {}
   data["form"] = f
@@ -64,7 +66,7 @@ def create_post(request):
     post = f.save(commit=False)
     post.slug = slugify(post.title)
     post.save()
-    return redirect("post-view", s=post.slug)
+    return redirect("show-post", s=post.slug)
   return render(request, "create_post.html", context=data)
 
 # This is the not so right way
