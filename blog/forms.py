@@ -5,7 +5,7 @@ from .models import Post, Comment
 class PostForm(forms.ModelForm):
   class Meta:
     model = Post
-    fields = ["title", "body",]
+    fields = ["title", "body", "status"]
 
 class CommentForm(forms.ModelForm):
   class Meta:
@@ -13,4 +13,5 @@ class CommentForm(forms.ModelForm):
     fields = ["comment", "author", "email", "post"]
     widgets = {
       "post": forms.HiddenInput(),
-    }
+    } 
+    
