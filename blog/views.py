@@ -1,10 +1,9 @@
 import datetime
 
-from django.utils.text import slugify
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.text import slugify
 
 from .models import Post
-
 from .forms import PostForm, CommentForm
 
 def test_view(request): #1
@@ -23,13 +22,13 @@ def greet_view(request, name):
 
 def list_posts_view(request):
   
-  # # d = datetime.datetime(2021, 4,1)
-  # # data_list = Post.objects.filter(created_on__gt=d)
+  # d = datetime.datetime(2021, 4,1)
+  # data_list = Post.objects.filter(created_on__gt=d)
 
-  # d1 = datetime.datetime(2021, 5, 1)
-  # d2 = datetime.datetime(2021, 6, 1)
+  #d1 = datetime.datetime(2021, 5, 1)
+  #d2 = datetime.datetime(2021, 6, 1)
 
-  # data_list = Post.objects.filter(created_on__range=(d1, d2))
+  #data_list = Post.objects.filter(created_on__range=(d1, d2))
   data_list = Post.objects.all()
 
   data = {}
@@ -52,28 +51,27 @@ def show_post(request, s):
   data["comment_list"] = comments
   
   f = CommentForm(request.POST or None, initial={
-    "post": obj.id,
+    "post": obj.pk,
+    # "post": obj.id, # works as well
   })
   data["form"] = f
   if f.is_valid():
     f.save()
-    return redirect('show-post', s=obj.slug)
+    return redirect("post-view", s=obj.slug)
   return render(request, "post_detail.html", context=data)
 
 
 def create_post(request):
-  form = PostForm(request.POST or None)
+  f = PostForm(request.POST or None) 
 
   data = {}
-  data["form"] = form
+  data["form"] = f
 
-  if form.is_valid():
-    post = form.save(commit=False)
+  if f.is_valid():
+    post = f.save(commit=False)
     post.slug = slugify(post.title)
     post.save()
-    #return redirect("list-posts")
-    return redirect("show-post", s=post.slug)
-
+    return redirect("post-view", s=post.slug)
   return render(request, "create_post.html", context=data)
 
 
@@ -81,26 +79,26 @@ def edit_post(request, s):
   p = get_object_or_404(Post, slug=s)
   f = PostForm(request.POST or None, instance=p)
 
-  data = {}
-  data["post"] = p
-  data["form"] = f
+  data = {
+    "post": p,
+    "form": f,
+  }
 
   if f.is_valid():
     post = f.save(commit=False)
     post.slug = slugify(post.title)
     post.save()
-    return redirect("show-post", s=post.slug)
+    return redirect("post-view", s=post.slug)
   return render(request, "edit_post.html", context=data)
 
 
 def delete_post(request, s):
   p = get_object_or_404(Post, slug=s)
-
-  m = f"Do you want to delete {p.title}?"
+  m = f"Do you want to delete the post {p.title}?"
   data = {
     "message": m,
   }
-  
+
   if "confirm" in request.GET:
     p.delete()
     return redirect("list-posts")
@@ -108,7 +106,7 @@ def delete_post(request, s):
     return redirect("list-posts")
   else:
     return render(request, "confirm.html", context=data)
-  
+
 # This is the not so right way
 # from django.http import HttpResponse
 

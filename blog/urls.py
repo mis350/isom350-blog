@@ -9,8 +9,8 @@ urlpatterns = [
   path('greet/<str:name>/', views.greet_view),
   path('posts/', views.list_posts_view, name="list-posts"),
   path('search/title/<str:query>/',views.search_posts),
-  path('post/<slug:s>/',views.show_post, name='show-post'),
+  path('post/<slug:s>/',views.show_post, name="post-view"),
   path('create/post/',views.create_post),
-  path('edit/post/<slug:s>/',views.edit_post, name='edit-post'),
-  path('delete/post/<slug:s>/',views.delete_post, name='delete-post'),
+  path('edit/post/<slug:s>/',views.edit_post, name="edit-post"),
+  path('delete/post/<slug:s>/',views.delete_post, name="delete-post"),
 ]
