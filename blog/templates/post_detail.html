@@ -1,8 +1,6 @@
-<!doctype html>
+{% extends 'base.html' %}
 
-<html lang="en">
-<head><title>{{ post.title }}</title></head>
-  <body>
+{% block content %}
     <h1>{{ post.title }}</h1>
     <p>{{ post.body }}</p>
     <pre>Posted on: {{ post.created_on }}</pre>
@@ -22,6 +20,4 @@
   {{ form.as_p }}
   <input type="submit" value="Add Comment">
 </form>
-
-  </body>
-</html>
+{% endblock %}

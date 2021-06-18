@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post List</title>
-</head>
-<body>
-  
-<h1>Latest Posts:</h1>
+{% extends 'base.html' %}
 
+
+{% block title %}
+List Posts
+{% endblock%}
+
+{% block content %}
+
+<h1>Latest Posts:</h1>
 <ol>
 {% for p in posts %}
 <li>
@@ -17,11 +16,11 @@
     {{ p.title }}
   </a>
   
-  
   </strong> created on {{ p.created_on }} 
 </li>
 {% endfor %}
 </ol>
 
-</body>
-</html>
+{% endblock %}
+
+

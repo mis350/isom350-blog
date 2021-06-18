@@ -16,6 +16,7 @@ class Post(models.Model):
   created_on = models.DateTimeField(auto_now_add=True)
   updated_on = models.DateTimeField(auto_now=True)
   status = models.IntegerField(choices=STATUS, default=0)
+  publish_on = models.DateTimeField(null=True, blank=True)
   
   def __str__(self):
     # This method tells django what to display when a post object is printed or what to display in the admin interface. 
