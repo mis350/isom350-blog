@@ -2,6 +2,7 @@ import datetime
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.text import slugify
+from django.contrib.auth.decorators import login_required
 
 from .models import Post
 from .forms import PostForm, CommentForm
@@ -66,6 +67,7 @@ def show_post(request, s):
   return render(request, "post_detail.html", context=data)
 
 
+@login_required
 def create_post(request):
   f = PostForm(request.POST or None)
 

@@ -14,10 +14,21 @@
     </li>
     {% endfor %}
     </ul>
-
+{% if user.is_authenticated %}
 <form action="" method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Add Comment">
 </form>
+{% else %}
+<p>
+  <a href="{% url 'account_login' %}">
+  login 
+  </a>
+  or 
+  <a href="{% url 'account_signup' %}">
+  signup
+  </a>
+   to comment</p>
+{% endif %}
 {% endblock %}
